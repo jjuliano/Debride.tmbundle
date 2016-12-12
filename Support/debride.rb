@@ -39,7 +39,7 @@ def messages(offences)
     severity = :warning
     line = offence[0][/.*:(\d+)$/, 1]
     message = messages[severity][line] ||= []
-    message << "Thi method MIGHT not be called."
+    message << "This method MIGHT not be called."
   end
   messages
 end
