@@ -20,6 +20,8 @@ Make sure $TM_RUBY is set to current ruby directory, then:
     cd ~/Library/Application\ Support/TextMate/Bundles
     git clone https://github.com/jjuliano/Debride.tmbundle.git
 
+To use a whitelist, set the $RUBY_WHITELIST variable (via TextMate > Preferences > Variables) pointing to the whitelist.txt file.
+
 Screenshot
 ----------
 ![screenshot](Support/screenshot.png?raw=true "screenshot")

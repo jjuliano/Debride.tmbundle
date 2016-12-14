@@ -15,11 +15,16 @@ def log(msg)
 end
 
 def offences(file)
+  whitelist = ENV['RUBY_WHITELIST']
   @bad = []
-  debride = Debride.run([file])
+  debride = if whitelist
+    Debride.run(['--whitelist', whitelist, file])
+  else
+    Debride.run([file])
+  end
   debride.missing.each do |klass, meths|
     bad = meths.map { |meth|
-      location = debride.method_locations["#{klass}##{meth}"]
+      location = debride.method_locations["#{klass}##{meth}"] || debride.method_locations["#{klass}::#{meth}"]
       line = location[/.*:(\d+)$/, 1]
       path = location[/(.+):\d+$/, 1]
       [location]
